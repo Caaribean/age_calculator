@@ -2,5 +2,44 @@
 @use "mixins.scss" as m;
 
 body {
-    font-family: v.$poppins;
+  font-family: v.$poppins;
+  font-size: 16px;
+  background-color: v.$off-white;
+}
+
+.container {
+  .box {
+    margin: 2rem auto;
+    max-width: 90%;
+    padding: 3rem 3.5rem 3.5rem;
+    background-color: v.$white;
+    border-radius: 1.5rem 1.5rem 12.5rem 1.5rem;
+
+    &__form {
+      display: flex;
+
+      &__text {
+        font-weight: 800;
+        letter-spacing: 0.25rem;
+        text-transform: uppercase;
+        color: v.$smokey-grey;
+      }
+
+      &__input {
+        height: 4.5rem;
+        padding: 1.6rem;
+        font-weight: 800;
+        border: 1px solid v.$light-grey;
+        border-radius: 0.5rem;
+        margin-top: 1rem; 
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
