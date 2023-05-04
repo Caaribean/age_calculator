@@ -8,9 +8,9 @@ body {
   position: relative;
   margin: 2rem auto;
   max-width: 90%;
-  padding: 3rem 3.5rem 3.5rem;
+  padding: 5rem;
   background-color: hsl(0, 0%, 100%);
-  border-radius: 1.5rem 1.5rem 12.5rem 1.5rem;
+  border-radius: 1.5rem 1.5rem 12rem;
 }
 .container .box__form {
   display: flex;
@@ -24,6 +24,9 @@ body {
   text-transform: uppercase;
   color: hsl(0, 1%, 44%);
 }
+.container .box__form__text[invalid] {
+  color: hsl(0, 100%, 67%);
+}
 .container .box__form__input {
   height: 4.5rem;
   width: 200%;
@@ -32,16 +35,34 @@ body {
   font-weight: 800;
   border: 1px solid hsl(0, 0%, 86%);
   border-radius: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   cursor: pointer;
 }
+.container .box__form__input::-webkit-outer-spin-button, .container .box__form__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container .box__form__input[invalid] {
+  border: 0.2rem solid hsl(0, 100%, 67%);
+}
 .container .box__form__error-message {
-  margin-top: 0.5rem;
+  display: none;
   font-size: 0.6rem;
   font-style: italic;
   font-weight: 400;
   line-height: 1;
   color: hsl(0, 100%, 67%);
+}
+.container .box__form .img {
+  position: absolute;
+  width: 15%;
+  right: 50;
+  top: 150;
+  cursor: pointer;
+}
+.container .box__form .img:hover {
+  filter: brightness(50%);
 }
 .container .box__output {
   margin-top: 2rem;
@@ -60,10 +81,4 @@ body {
   letter-spacing: -0.125rem;
   line-height: 1.1;
   color: hsl(0, 0%, 8%);
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }/*# sourceMappingURL=style.css.map */
