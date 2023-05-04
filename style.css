@@ -1,0 +1,84 @@
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  background-color: hsl(0, 0%, 94%);
+}
+
+.container .box {
+  position: relative;
+  margin: 2rem auto;
+  max-width: 90%;
+  padding: 5rem;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 1.5rem 1.5rem 12rem;
+}
+.container .box__form {
+  display: flex;
+  border-bottom: 1px solid hsl(0, 0%, 86%);
+  padding-bottom: 4rem;
+}
+.container .box__form__text {
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+  color: hsl(0, 1%, 44%);
+}
+.container .box__form__text[invalid] {
+  color: hsl(0, 100%, 67%);
+}
+.container .box__form__input {
+  height: 4.5rem;
+  width: 200%;
+  padding: 1.6rem;
+  font-size: 2rem;
+  font-weight: 800;
+  border: 1px solid hsl(0, 0%, 86%);
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+.container .box__form__input::-webkit-outer-spin-button, .container .box__form__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container .box__form__input[invalid] {
+  border: 0.2rem solid hsl(0, 100%, 67%);
+}
+.container .box__form__error-message {
+  display: none;
+  font-size: 0.6rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  color: hsl(0, 100%, 67%);
+}
+.container .box__form .img {
+  position: absolute;
+  width: 15%;
+  right: 50;
+  top: 150;
+  cursor: pointer;
+}
+.container .box__form .img:hover {
+  filter: brightness(50%);
+}
+.container .box__output {
+  margin-top: 2rem;
+}
+.container .box__output__number {
+  font-size: 6.5rem;
+  font-weight: 800;
+  letter-spacing: -0.125rem;
+  line-height: 1.1;
+  color: hsl(259, 100%, 65%);
+}
+.container .box__output__header {
+  font-size: 6.5rem;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.125rem;
+  line-height: 1.1;
+  color: hsl(0, 0%, 8%);
+}/*# sourceMappingURL=style.css.map */

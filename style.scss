@@ -2,5 +2,45 @@
 @use "mixins.scss" as m;
 
 body {
-    font-family: v.$poppins;
+  font-family: v.$poppins;
+  font-size: 16px;
+  background-color: v.$off-white;
+}
+
+.container {
+  .box {
+    @include m.box; 
+
+    &__form {
+      @include m.form; 
+
+      &__text {
+        @include m.text; 
+      }
+
+      &__input {
+        @include m.input;
+      }
+
+      &__error-message {
+        @include m.text-error; 
+      }
+
+      .img {
+        @include m.img; 
+      }
+    }
+
+    &__output {
+      margin-top: 2rem;
+
+      &__number {
+        @include m.number; 
+      }
+
+      &__header {
+        @include m.header;
+      }
+    }
+  }
 }
