@@ -1,13 +1,20 @@
 window.addEventListener("load", function () {
+  // elements
   const inputDay = document.getElementById("input-day");
   const inputMonth = document.getElementById("input-month");
   const inputYear = document.getElementById("input-year");
   const resultYears = document.getElementById("result-years");
   const resultMonths = document.getElementById("result-months");
   const resultDays = document.getElementById("result-days");
-  const errorDay = document.getElementById('error-day');
-  const errorMonth = document.getElementById('error-month');
-  const errorYear = document.getElementById('error-year');
+  const button = document.getElementById("button");
+
+  // error messages
+  const errorDay = document.getElementById("error-day");
+  const errorMonth = document.getElementById("error-month");
+  const errorYear = document.getElementById("error-year");
+
+  // current date
+  const currentDate = new Date();
 
   inputDay.addEventListener("change", (e) => {
     const isValid = validValueFromInputDay(e.target.value);
@@ -31,12 +38,37 @@ window.addEventListener("load", function () {
     }
   });
 
+  inputYear.addEventListener("change", (e) => {
+    const isValid = yearValidation(e.target.value);
+    if (isValid) {
+      e.target.removeAttribute("invalid");
+      inputNotVisibility();
+    } else {
+      e.target.setAttribute("invalid", !isValid);
+      inputVisibilityYear();
+    }
+  });
+
+  button.addEventListener("click", (e) => {});
+
   function validValueFromInputDay(value) {
     return value > 0 && value <= 31;
   }
 
   function validValueFromInputMonth(value) {
     return value > 0 && value <= 12;
+  }
+
+  function yearValidation(value) {
+    var currentYear = new Date().getFullYear();
+    if ((value.length = !4)) {
+      return false;
+    }
+    if (value < 1900 || value > currentYear) {
+      return false;
+    } else {
+      return true; 
+    }
   }
 
   function inputVisibilityDay() {
