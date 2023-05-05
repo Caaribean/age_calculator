@@ -49,7 +49,9 @@ window.addEventListener("load", function () {
     }
   });
 
-  button.addEventListener("click", (e) => {});
+  button.addEventListener("click", (e) => {
+    checkInputEmpty();
+  });
 
   function validValueFromInputDay(value) {
     return value > 0 && value <= 31;
@@ -67,7 +69,22 @@ window.addEventListener("load", function () {
     if (value < 1900 || value > currentYear) {
       return false;
     } else {
-      return true; 
+      return true;
+    }
+  }
+
+  function checkInputEmpty() {
+    if (inputDay.value === "") {
+      inputVisibilityDay();
+    }
+    if (inputMonth.value === "") {
+      inputVisibilityMonth();
+    }
+    if (inputYear.value === "") {
+      inputVisibilityYear();
+    }
+    else {
+      inputNotVisibility();  
     }
   }
 
