@@ -54,6 +54,14 @@ body {
   line-height: 1;
   color: hsl(0, 100%, 67%);
 }
+.container .box__form__empty {
+  display: none;
+  font-size: 0.6rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  color: hsl(0, 100%, 67%);
+}
 .container .box__form .img-btn {
   position: absolute;
   width: 15%;

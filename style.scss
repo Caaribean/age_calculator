@@ -26,6 +26,10 @@ body {
         @include m.text-error; 
       }
 
+      &__empty {
+        @include m.text-error;
+      }
+
       .img-btn {
         @include m.img; 
       }

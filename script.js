@@ -12,6 +12,9 @@ window.addEventListener("load", function () {
   const errorDay = document.getElementById("error-day");
   const errorMonth = document.getElementById("error-month");
   const errorYear = document.getElementById("error-year");
+  const errorEmptyDay = document.getElementById("empty-day");
+  const errorEmptyMonth = document.getElementById("empty-month");
+  const errorEmptyYear = document.getElementById("empty-year");
 
   // current date
   const currentDate = new Date();
@@ -21,7 +24,8 @@ window.addEventListener("load", function () {
     if (isValid) {
       e.target.removeAttribute("invalid");
       inputNotVisibility();
-    } else {
+    }
+    else {
       e.target.setAttribute("invalid", !isValid);
       inputVisibilityDay();
     }
@@ -75,16 +79,16 @@ window.addEventListener("load", function () {
 
   function checkInputEmpty() {
     if (inputDay.value === "") {
-      inputVisibilityDay();
+      inputVisibilityEmptyDay();
     }
     if (inputMonth.value === "") {
-      inputVisibilityMonth();
+      inputVisibilityEmptyMonth();
     }
     if (inputYear.value === "") {
-      inputVisibilityYear();
+      inputVisibilityEmptyYear();
     }
     else {
-      inputNotVisibility();  
+      inputNotVisibilityEmpty();  
     }
   }
 
@@ -100,9 +104,27 @@ window.addEventListener("load", function () {
     errorYear.style.display = "block";
   }
 
+  function inputVisibilityEmptyDay() {
+    errorEmptyDay.style.display = "block";
+  }
+
+  function inputVisibilityEmptyMonth() {
+    errorEmptyMonth.style.display = "block";
+  }
+
+  function inputVisibilityEmptyYear() {
+    errorEmptyYear.style.display = "block";
+  }
+
   function inputNotVisibility() {
     errorDay.style.display = "none";
     errorMonth.style.display = "none";
     errorYear.style.display = "none";
   }
+
+  function inputNotVisibilityEmpty() {
+    errorEmptyDay.style.display = "none";
+    errorEmptyMonth.style.display = "none";
+    errorEmptyYear.style.display = "none";
+  } 
 });
