@@ -20,41 +20,101 @@ window.addEventListener("load", function () {
   const currentDate = new Date();
 
   inputDay.addEventListener("change", (e) => {
-    const isValid = validValueFromInputDay(e.target.value);
-    if (isValid) {
-      e.target.removeAttribute("invalid");
-      inputNotVisibility();
-    }
-    else {
-      e.target.setAttribute("invalid", !isValid);
-      inputVisibilityDay();
+    e.target.removeAttribute("invalid");
+    setDisplayToElement(errorDay, "none");
+    setDisplayToElement(errorEmptyDay, "none");
+    if (isDayNotEmpty()) {
+      const isValid = validValueFromInputDay(e.target.value);
+      if (isValid) {
+        e.target.removeAttribute("invalid");
+        setDisplayToElement(errorDay, "none");
+      } else {
+        e.target.setAttribute("invalid", !isValid);
+        setDisplayToElement(errorDay, "block");
+      }
     }
   });
 
   inputMonth.addEventListener("change", (e) => {
-    const isValid = validValueFromInputMonth(e.target.value);
-    if (isValid) {
-      e.target.removeAttribute("invalid");
-      inputNotVisibility();
-    } else {
-      e.target.setAttribute("invalid", !isValid);
-      inputVisibilityMonth();
+    e.target.removeAttribute("invalid");
+    setDisplayToElement(errorMonth, "none");
+    setDisplayToElement(errorEmptyMonth, "none");
+    if (isMonthNotEmpty()) {
+      const isValid = validValueFromInputMonth(e.target.value);
+      if (isValid) {
+        e.target.removeAttribute("invalid");
+        setDisplayToElement(errorMonth, "none");
+      } else {
+        e.target.setAttribute("invalid", !isValid);
+        setDisplayToElement(errorMonth, "block");
+      }
     }
   });
 
   inputYear.addEventListener("change", (e) => {
-    const isValid = yearValidation(e.target.value);
-    if (isValid) {
-      e.target.removeAttribute("invalid");
-      inputNotVisibility();
-    } else {
-      e.target.setAttribute("invalid", !isValid);
-      inputVisibilityYear();
+    e.target.removeAttribute("invalid");
+    setDisplayToElement(errorYear, "none");
+    setDisplayToElement(errorEmptyYear, "none");
+    if (isYearNotEmpty()) {
+      const isValid = yearValidation(e.target.value);
+      if (isValid) {
+        e.target.removeAttribute("invalid");
+        setDisplayToElement(errorYear, "none");
+      } else {
+        e.target.setAttribute("invalid", !isValid);
+        setDisplayToElement(errorYear, "block");
+      }
     }
   });
 
   button.addEventListener("click", (e) => {
-    checkInputEmpty();
+    inputDay.addEventListener("change", (e) => {
+      e.target.removeAttribute("invalid");
+      setDisplayToElement(errorDay, "none");
+      setDisplayToElement(errorEmptyDay, "none");
+      if (isDayNotEmpty()) {
+        const isValid = validValueFromInputDay(e.target.value);
+        if (isValid) {
+          e.target.removeAttribute("invalid");
+          setDisplayToElement(errorDay, "none");
+        } else {
+          e.target.setAttribute("invalid", !isValid);
+          setDisplayToElement(errorDay, "block");
+        }
+      }
+    });
+
+    inputMonth.addEventListener("change", (e) => {
+      e.target.removeAttribute("invalid");
+      setDisplayToElement(errorMonth, "none");
+      setDisplayToElement(errorEmptyMonth, "none");
+      if (isMonthNotEmpty()) {
+        const isValid = validValueFromInputMonth(e.target.value);
+        if (isValid) {
+          e.target.removeAttribute("invalid");
+          setDisplayToElement(errorMonth, "none");
+        } else {
+          e.target.setAttribute("invalid", !isValid);
+          setDisplayToElement(errorMonth, "block");
+        }
+      }
+    });
+
+    inputYear.addEventListener("change", (e) => {
+      e.target.removeAttribute("invalid");
+      setDisplayToElement(errorYear, "none");
+      setDisplayToElement(errorEmptyYear, "none");
+      if (isYearNotEmpty()) {
+        const isValid = yearValidation(e.target.value);
+        if (isValid) {
+          e.target.removeAttribute("invalid");
+          setDisplayToElement(errorYear, "none");
+        } else {
+          e.target.setAttribute("invalid", !isValid);
+          setDisplayToElement(errorYear, "block");
+        }
+      }
+    });
   });
 
   function validValueFromInputDay(value) {
@@ -77,54 +137,47 @@ window.addEventListener("load", function () {
     }
   }
 
-  function checkInputEmpty() {
-    if (inputDay.value === "") {
-      inputVisibilityEmptyDay();
-    }
-    if (inputMonth.value === "") {
-      inputVisibilityEmptyMonth();
-    }
-    if (inputYear.value === "") {
-      inputVisibilityEmptyYear();
-    }
-    else {
-      inputNotVisibilityEmpty();  
+  function isDayNotEmpty() {
+    if (!inputDay.value) {
+      setDisplayToElement(errorEmptyDay, "block");
+      return false;
+    } else {
+      setDisplayToElement(errorEmptyDay, "none");
+      return true;
     }
   }
-
-  function inputVisibilityDay() {
-    errorDay.style.display = "block";
+  function isMonthNotEmpty() {
+    if (!inputMonth.value) {
+      setDisplayToElement(errorEmptyMonth, "block");
+      return false;
+    } else {
+      setDisplayToElement(errorEmptyMonth, "none");
+      return true;
+    }
+  }
+  function isYearNotEmpty() {
+    if (!inputYear.value) {
+      setDisplayToElement(errorEmptyYear, "block");
+      return false;
+    } else {
+      setDisplayToElement(errorEmptyYear, "none");
+      return true;
+    }
   }
 
-  function inputVisibilityMonth() {
-    errorMonth.style.display = "block";
-  }
-
-  function inputVisibilityYear() {
-    errorYear.style.display = "block";
-  }
-
-  function inputVisibilityEmptyDay() {
-    errorEmptyDay.style.display = "block";
-  }
-
-  function inputVisibilityEmptyMonth() {
-    errorEmptyMonth.style.display = "block";
-  }
-
-  function inputVisibilityEmptyYear() {
-    errorEmptyYear.style.display = "block";
+  function setDisplayToElement(elementDOM, typeOfDisplay) {
+    elementDOM.style.display = typeOfDisplay;
   }
 
   function inputNotVisibility() {
-    errorDay.style.display = "none";
-    errorMonth.style.display = "none";
-    errorYear.style.display = "none";
+    setDisplayToElement(errorDay, "none");
+    setDisplayToElement(errorMonth, "none");
+    setDisplayToElement(errorYear, "none");
   }
 
   function inputNotVisibilityEmpty() {
-    errorEmptyDay.style.display = "none";
-    errorEmptyMonth.style.display = "none";
-    errorEmptyYear.style.display = "none";
-  } 
+    setDisplayToElement(errorEmptyDay, "none");
+    setDisplayToElement(errorEmptyMonth, "none");
+    setDisplayToElement(errorEmptyYear, "none");
+  }
 });
