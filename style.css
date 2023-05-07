@@ -14,7 +14,7 @@ body {
 }
 .container .box__form {
   display: flex;
-  border-bottom: 1px solid hsl(0, 0%, 86%);
+  border-bottom: 0.06rem solid hsl(0, 0%, 86%);
   padding-bottom: 4rem;
 }
 .container .box__form__text {
@@ -33,7 +33,7 @@ body {
   padding: 1.6rem;
   font-size: 2rem;
   font-weight: 800;
-  border: 1px solid hsl(0, 0%, 86%);
+  border: 0.06rem solid hsl(0, 0%, 86%);
   border-radius: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -54,14 +54,22 @@ body {
   line-height: 1;
   color: hsl(0, 100%, 67%);
 }
-.container .box__form .img {
+.container .box__form__empty {
+  display: none;
+  font-size: 0.6rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  color: hsl(0, 100%, 67%);
+}
+.container .box__form .img-btn {
   position: absolute;
   width: 15%;
   right: 50;
   top: 150;
   cursor: pointer;
 }
-.container .box__form .img:hover {
+.container .box__form .img-btn:hover {
   filter: brightness(50%);
 }
 .container .box__output {
