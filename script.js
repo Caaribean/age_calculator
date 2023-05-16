@@ -20,102 +20,91 @@ window.addEventListener("load", function () {
   const currentDate = new Date();
 
   inputDay.addEventListener("change", (e) => {
-    e.target.removeAttribute("invalid");
-    setDisplayToElement(errorDay, "none");
-    setDisplayToElement(errorEmptyDay, "none");
-    if (isDayNotEmpty()) {
-      const isValid = validValueFromInputDay(e.target.value);
-      if (isValid) {
-        e.target.removeAttribute("invalid");
-        setDisplayToElement(errorDay, "none");
-      } else {
-        e.target.setAttribute("invalid", !isValid);
-        setDisplayToElement(errorDay, "block");
-      }
-    }
+    validationForDay();
   });
 
   inputMonth.addEventListener("change", (e) => {
-    e.target.removeAttribute("invalid");
-    setDisplayToElement(errorMonth, "none");
-    setDisplayToElement(errorEmptyMonth, "none");
-    if (isMonthNotEmpty()) {
-      const isValid = validValueFromInputMonth(e.target.value);
-      if (isValid) {
-        e.target.removeAttribute("invalid");
-        setDisplayToElement(errorMonth, "none");
-      } else {
-        e.target.setAttribute("invalid", !isValid);
-        setDisplayToElement(errorMonth, "block");
-      }
-    }
+    validationForMonth();
   });
 
   inputYear.addEventListener("change", (e) => {
-    e.target.removeAttribute("invalid");
-    setDisplayToElement(errorYear, "none");
-    setDisplayToElement(errorEmptyYear, "none");
-    if (isYearNotEmpty()) {
-      const isValid = yearValidation(e.target.value);
-      if (isValid) {
-        e.target.removeAttribute("invalid");
-        setDisplayToElement(errorYear, "none");
-      } else {
-        e.target.setAttribute("invalid", !isValid);
-        setDisplayToElement(errorYear, "block");
-      }
-    }
+    validationForYear();
   });
 
   button.addEventListener("click", (e) => {
-    inputDay.addEventListener("change", (e) => {
-      e.target.removeAttribute("invalid");
-      setDisplayToElement(errorDay, "none");
-      setDisplayToElement(errorEmptyDay, "none");
-      if (isDayNotEmpty()) {
-        const isValid = validValueFromInputDay(e.target.value);
-        if (isValid) {
-          e.target.removeAttribute("invalid");
-          setDisplayToElement(errorDay, "none");
-        } else {
-          e.target.setAttribute("invalid", !isValid);
-          setDisplayToElement(errorDay, "block");
-        }
-      }
-    });
+    //tutaj dodać nowe funkcje validacyjne
+    //jeśli wa;lidacja przebiegnie poprawnie
+    //to oblicz mi wiek
+    validationForDay();
+    validationForMonth();
+    validationForYear();
 
-    inputMonth.addEventListener("change", (e) => {
-      e.target.removeAttribute("invalid");
-      setDisplayToElement(errorMonth, "none");
-      setDisplayToElement(errorEmptyMonth, "none");
-      if (isMonthNotEmpty()) {
-        const isValid = validValueFromInputMonth(e.target.value);
-        if (isValid) {
-          e.target.removeAttribute("invalid");
-          setDisplayToElement(errorMonth, "none");
-        } else {
-          e.target.setAttribute("invalid", !isValid);
-          setDisplayToElement(errorMonth, "block");
-        }
-      }
-    });
-
-    inputYear.addEventListener("change", (e) => {
-      e.target.removeAttribute("invalid");
-      setDisplayToElement(errorYear, "none");
-      setDisplayToElement(errorEmptyYear, "none");
-      if (isYearNotEmpty()) {
-        const isValid = yearValidation(e.target.value);
-        if (isValid) {
-          e.target.removeAttribute("invalid");
-          setDisplayToElement(errorYear, "none");
-        } else {
-          e.target.setAttribute("invalid", !isValid);
-          setDisplayToElement(errorYear, "block");
-        }
-      }
-    });
+    if (validationForDay() && validationForMonth() && validationForYear()) {
+      calc();
+    }
   });
+
+  //to do
+  // TO SAMO DLA MIESIECY DLA LAT - PAMIĘTAJ O ZAMIANIE E.TARGET NA ODPOWIEDNIĄ ZMIENNĄ KTÓRA JEST U GÓRY
+  function validationForDay() {
+    inputDay.removeAttribute("invalid");
+    setDisplayToElement(errorDay, "none");
+    setDisplayToElement(errorEmptyDay, "none");
+    if (isDayNotEmpty()) {
+      const isValid = validValueFromInputDay(inputDay.value);
+      if (isValid) {
+        inputDay.removeAttribute("invalid");
+        setDisplayToElement(errorDay, "none");
+        return true;
+      } else {
+        inputDay.setAttribute("invalid", !isValid);
+        setDisplayToElement(errorDay, "block");
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  function validationForMonth() {
+    inputMonth.removeAttribute("invalid");
+    setDisplayToElement(errorMonth, "none");
+    setDisplayToElement(errorEmptyMonth, "none");
+    if (isMonthNotEmpty()) {
+      const isValid = validValueFromInputMonth(inputMonth.value);
+      if (isValid) {
+        inputMonth.removeAttribute("invalid");
+        setDisplayToElement(errorMonth, "none");
+        return true;
+      } else {
+        inputMonth.setAttribute("invalid", !isValid);
+        setDisplayToElement(errorMonth, "block");
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  function validationForYear() {
+    inputYear.removeAttribute("invalid");
+    setDisplayToElement(errorYear, "none");
+    setDisplayToElement(errorEmptyYear, "none");
+    if (isYearNotEmpty()) {
+      const isValid = yearValidation(inputYear.value);
+      if (isValid) {
+        inputYear.removeAttribute("invalid");
+        setDisplayToElement(errorYear, "none");
+        return true;
+      } else {
+        inputYear.setAttribute("invalid", !isValid);
+        setDisplayToElement(errorYear, "block");
+        return false;
+      }
+    } else {
+      return false; 
+    }
+  }
 
   function validValueFromInputDay(value) {
     return value > 0 && value <= 31;
@@ -127,7 +116,7 @@ window.addEventListener("load", function () {
 
   function yearValidation(value) {
     var currentYear = new Date().getFullYear();
-    if ((value.length = !4)) {
+    if (value.length != 4) {
       return false;
     }
     if (value < 1900 || value > currentYear) {
@@ -179,5 +168,14 @@ window.addEventListener("load", function () {
     setDisplayToElement(errorEmptyDay, "none");
     setDisplayToElement(errorEmptyMonth, "none");
     setDisplayToElement(errorEmptyYear, "none");
+  }
+
+  function calc() {
+    console.log("OBLICZANIE");
+    //LOGIKA ZWIĄZANA Z OBLICZANIEM//
+
+    //na końcu jak dobrze obliczysz to podmieniasz wartości w spanach
+
+    var month_dff
   }
 });
