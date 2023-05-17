@@ -38,9 +38,15 @@ window.addEventListener("load", function () {
     validationForDay();
     validationForMonth();
     validationForYear();
+    
 
     if (validationForDay() && validationForMonth() && validationForYear()) {
       calc();
+    } else {
+      console.log("ERROR");
+      resultYears.textContent = "--";
+      resultMonths.textContent = "--";
+      resultDays.textContent = "--";
     }
   });
 
@@ -95,6 +101,7 @@ window.addEventListener("load", function () {
       if (isValid) {
         inputYear.removeAttribute("invalid");
         setDisplayToElement(errorYear, "none");
+        //console.log(inputYear.value);
         return true;
       } else {
         inputYear.setAttribute("invalid", !isValid);
@@ -102,7 +109,7 @@ window.addEventListener("load", function () {
         return false;
       }
     } else {
-      return false; 
+      return false;
     }
   }
 
@@ -158,7 +165,7 @@ window.addEventListener("load", function () {
     elementDOM.style.display = typeOfDisplay;
   }
 
-  function inputNotVisibility() {
+  /* function inputNotVisibility() {
     setDisplayToElement(errorDay, "none");
     setDisplayToElement(errorMonth, "none");
     setDisplayToElement(errorYear, "none");
@@ -168,7 +175,7 @@ window.addEventListener("load", function () {
     setDisplayToElement(errorEmptyDay, "none");
     setDisplayToElement(errorEmptyMonth, "none");
     setDisplayToElement(errorEmptyYear, "none");
-  }
+  } */
 
   function calc() {
     console.log("OBLICZANIE");
@@ -176,6 +183,42 @@ window.addEventListener("load", function () {
 
     //na końcu jak dobrze obliczysz to podmieniasz wartości w spanach
 
-    var month_dff
+    // current date
+    var now = new Date();
+    var nowYear = now.getFullYear();
+    var nowMonth = now.getMonth() + 1;
+    var nowDay = now.getDate();
+
+    // get year
+    var yearAge = nowYear - inputYear.value;
+    console.log(yearAge);
+    resultYears.textContent = yearAge;
+
+    // get month
+    if (nowMonth >= inputMonth.value) {
+      var monthAge = nowMonth - inputMonth.value;
+    } else {
+      yearAge--;
+      var monthAge = 12 + nowMonth - inputMonth.value;
+    }
+    console.log(monthAge);
+    resultMonths.textContent = monthAge;
+
+    // get day
+    if (nowDay >= inputDay.value) {
+      var dayAge = nowDay - inputDay.value;
+    } else {
+      monthAge--;
+      var dayAge = 31 + nowDay - inputDay.value;
+    }
+    console.log(dayAge);
+    resultDays.textContent = dayAge;
+
+    if (monthAge < 0) {
+      monthAge = 11;
+      yearAge--;
+    }
   }
+
+  calc();
 });
