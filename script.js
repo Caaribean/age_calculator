@@ -162,20 +162,22 @@ window.addEventListener("load", function () {
     resultYears.textContent = yearAge;
 
     // get month
+    let monthAge;
     if (nowMonth >= inputMonth.value) {
-      let monthAge = nowMonth - inputMonth.value;
+      monthAge = nowMonth - inputMonth.value;
     } else {
       yearAge--;
-      let monthAge = 12 + nowMonth - inputMonth.value;
+      monthAge = 12 + nowMonth - inputMonth.value;
     }
     resultMonths.textContent = monthAge;
 
     // get day
+    let dayAge;
     if (nowDay >= inputDay.value) {
-      let dayAge = nowDay - inputDay.value;
+      dayAge = nowDay - inputDay.value;
     } else {
       monthAge--;
-      let dayAge = 31 + nowDay - inputDay.value;
+      dayAge = 31 + nowDay - inputDay.value;
     }
     resultDays.textContent = dayAge;
 
