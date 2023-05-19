@@ -16,9 +16,6 @@ window.addEventListener("load", function () {
   const errorEmptyMonth = document.getElementById("empty-month");
   const errorEmptyYear = document.getElementById("empty-year");
 
-  // current date
-  const currentDate = new Date();
-
   inputDay.addEventListener("change", (e) => {
     validationForDay();
   });
@@ -32,26 +29,17 @@ window.addEventListener("load", function () {
   });
 
   button.addEventListener("click", (e) => {
-    //tutaj dodać nowe funkcje validacyjne
-    //jeśli wa;lidacja przebiegnie poprawnie
-    //to oblicz mi wiek
     validationForDay();
     validationForMonth();
     validationForYear();
-    
 
     if (validationForDay() && validationForMonth() && validationForYear()) {
       calc();
     } else {
       console.log("ERROR");
-      resultYears.textContent = "--";
-      resultMonths.textContent = "--";
-      resultDays.textContent = "--";
     }
   });
 
-  //to do
-  // TO SAMO DLA MIESIECY DLA LAT - PAMIĘTAJ O ZAMIANIE E.TARGET NA ODPOWIEDNIĄ ZMIENNĄ KTÓRA JEST U GÓRY
   function validationForDay() {
     inputDay.removeAttribute("invalid");
     setDisplayToElement(errorDay, "none");
@@ -101,7 +89,6 @@ window.addEventListener("load", function () {
       if (isValid) {
         inputYear.removeAttribute("invalid");
         setDisplayToElement(errorYear, "none");
-        //console.log(inputYear.value);
         return true;
       } else {
         inputYear.setAttribute("invalid", !isValid);
@@ -165,23 +152,9 @@ window.addEventListener("load", function () {
     elementDOM.style.display = typeOfDisplay;
   }
 
-  /* function inputNotVisibility() {
-    setDisplayToElement(errorDay, "none");
-    setDisplayToElement(errorMonth, "none");
-    setDisplayToElement(errorYear, "none");
-  }
-
-  function inputNotVisibilityEmpty() {
-    setDisplayToElement(errorEmptyDay, "none");
-    setDisplayToElement(errorEmptyMonth, "none");
-    setDisplayToElement(errorEmptyYear, "none");
-  } */
-
   function calc() {
     console.log("OBLICZANIE");
     //LOGIKA ZWIĄZANA Z OBLICZANIEM//
-
-    //na końcu jak dobrze obliczysz to podmieniasz wartości w spanach
 
     // current date
     var now = new Date();
@@ -219,6 +192,4 @@ window.addEventListener("load", function () {
       yearAge--;
     }
   }
-
-  calc();
 });
