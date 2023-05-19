@@ -35,8 +35,6 @@ window.addEventListener("load", function () {
 
     if (validationForDay() && validationForMonth() && validationForYear()) {
       calc();
-    } else {
-      console.log("ERROR");
     }
   });
 
@@ -109,7 +107,7 @@ window.addEventListener("load", function () {
   }
 
   function yearValidation(value) {
-    var currentYear = new Date().getFullYear();
+    let currentYear = new Date().getFullYear();
     if (value.length != 4) {
       return false;
     }
@@ -153,38 +151,32 @@ window.addEventListener("load", function () {
   }
 
   function calc() {
-    console.log("OBLICZANIE");
-    //LOGIKA ZWIĄZANA Z OBLICZANIEM//
-
     // current date
-    var now = new Date();
-    var nowYear = now.getFullYear();
-    var nowMonth = now.getMonth() + 1;
-    var nowDay = now.getDate();
+    let now = new Date();
+    let nowYear = now.getFullYear();
+    let nowMonth = now.getMonth() + 1;
+    let nowDay = now.getDate();
 
     // get year
-    var yearAge = nowYear - inputYear.value;
-    console.log(yearAge);
+    let yearAge = nowYear - inputYear.value;
     resultYears.textContent = yearAge;
 
     // get month
     if (nowMonth >= inputMonth.value) {
-      var monthAge = nowMonth - inputMonth.value;
+      let monthAge = nowMonth - inputMonth.value;
     } else {
       yearAge--;
-      var monthAge = 12 + nowMonth - inputMonth.value;
+      let monthAge = 12 + nowMonth - inputMonth.value;
     }
-    console.log(monthAge);
     resultMonths.textContent = monthAge;
 
     // get day
     if (nowDay >= inputDay.value) {
-      var dayAge = nowDay - inputDay.value;
+      let dayAge = nowDay - inputDay.value;
     } else {
       monthAge--;
-      var dayAge = 31 + nowDay - inputDay.value;
+      let dayAge = 31 + nowDay - inputDay.value;
     }
-    console.log(dayAge);
     resultDays.textContent = dayAge;
 
     if (monthAge < 0) {
